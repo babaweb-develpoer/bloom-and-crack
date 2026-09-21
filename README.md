@@ -26,9 +26,10 @@ the claim instead of asserting it.
   blend and origin are live text in the page, composited with `mix-blend-mode: multiply` on the
   light bags and `screen` on the dark one, so the type picks up the bag's own shading instead of
   sitting on top like a sticker. Changing a blend name is a text edit, not a re-shoot.
-- **A hero loop with no motion cost where it is not wanted.** The twelve second video is fetched
-  only on pointer-fine screens wider than 720px, and never when reduced motion or Save Data is
-  on. Everywhere else the poster carries the hero and the mp4 is not requested at all.
+- **A hero loop that costs a phone a third of what it costs a desktop.** The nine second video
+  ships in two encodes and the page picks by viewport: 563 KB at 1280px wide, 202 KB at 854px
+  for screens under 720px, visually identical at phone size. Under reduced motion or Save Data
+  neither is requested and the poster carries the hero.
 - **10 KB of JavaScript**, doing entrances, the menu, the accordion, the form, the hold and the
   video gate. Nothing else.
 

@@ -70,7 +70,8 @@ Made in the user's connected Canva account, exported and served locally:
 
 | File | Source | Where it sits |
 |---|---|---|
-| `assets/hero-loop.mp4` | Canva still, animated here with ffmpeg | The hero, a 12 second silent loop |
+| `assets/hero-loop.mp4` | Google Flow, graded and looped here | The hero, a 9 second silent loop, 1280px |
+| `assets/hero-loop-sm.mp4` | the same loop at 854px | The hero on screens under 720px |
 | `assets/hero-poster.jpg` | first frame of the loop | Hero still on phones and reduced motion |
 | `assets/beans.jpg` | Canva | Beside the roast date card in the freshness section |
 | `assets/counter.jpg` | Canva | The full bleed band between the shop and the bloom test |
@@ -88,11 +89,14 @@ cropping both to the same framing around it. Holding the button crossfades one i
 so the bed visibly rises and cracks. Let go early and it sinks back; finish the pour and it
 stays bloomed, which is exactly what the copy beside it promises.
 
-Canva's own mp4 export of a still design has no real motion, so the loop is built with ffmpeg:
-a slow ping pong zoom over twelve seconds that ends exactly where it starts, so it repeats with
-no visible cut. The video is muted, has no controls, and is fetched only on pointer-fine screens
-wider than 720px, with reduced motion and Save Data both honored. Everywhere else the poster
-carries the hero and the mp4 is never requested.
+The hero footage was generated in Google Flow, then graded to the page's tonal family (its
+backdrop reads around 200, where the rest of the photography sits between 191 and 217), stripped
+of audio, and crossfaded into a nine second seamless loop. The wrap point differs by 1.8/255
+against 6.2 for ordinary motion in the clip, so it does not read as a cut.
+
+It ships in two encodes and the page picks by viewport: 563 KB at 1280px, 202 KB at 854px below
+720px. Muted, no controls, paused off screen and on hidden tabs. Reduced motion and Save Data
+still drop it entirely and leave the poster.
 
 Canva's resize to 1200x630 left a hole in the middle of the share card, so the card is composed
 here in the site's own type and colour with the Canva photograph inside it.

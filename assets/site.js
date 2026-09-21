@@ -91,13 +91,15 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* the hero brew loop: only where it is wanted, and only while it is on screen */
+  /* the hero brew loop: plays everywhere, but a phone gets a third of the bytes */
   var heroVideo = document.getElementById('heroVideo');
   var heroSmall = window.matchMedia('(max-width: 720px)');
   var heroOnScreen = true;
   function heroBlocked() {
-    return reduced.matches || heroSmall.matches ||
-      !!(navigator.connection && navigator.connection.saveData);
+    return reduced.matches || !!(navigator.connection && navigator.connection.saveData);
+  }
+  function heroSrc() {
+    return heroSmall.matches ? 'assets/hero-loop-sm.mp4' : 'assets/hero-loop.mp4';
   }
   function armHeroVideo() {
     if (!heroVideo) return;
@@ -109,8 +111,9 @@
       }
       return;
     }
-    if (!heroVideo.getAttribute('src')) {
-      heroVideo.setAttribute('src', 'assets/hero-loop.mp4');
+    var want = heroSrc();
+    if (heroVideo.getAttribute('src') !== want) {
+      heroVideo.setAttribute('src', want);     /* swaps if the viewport crosses the breakpoint */
       heroVideo.load();
     }
     playHero();
